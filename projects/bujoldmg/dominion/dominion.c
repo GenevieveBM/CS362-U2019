@@ -1170,9 +1170,9 @@ int minionEffect(int choice1, int choice2, struct gameState *state, int handPos,
 		
 				// draw 4 cards for player's hand
 				int j;
-				for (j = 0; j < 4; i++)													// BUG2
+				for (j = 0; j < 4; j++)
 				{
-					drawCard(i, state);
+					drawCard(j, state);													// BUG2
 				}
 			}
 		}
