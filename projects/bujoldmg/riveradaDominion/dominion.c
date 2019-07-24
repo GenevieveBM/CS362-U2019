@@ -72,10 +72,10 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct 
 
 	//set number of Victory cards
 	if (numPlayers == 2) {
-		stateAdjust(8, state)
+		stateAdjust(8, state);
 	}
 	else {
-		stateAdjust(12, state)
+		stateAdjust(12, state);
 	}
 
 	//set number of Treasure cards
@@ -357,20 +357,21 @@ int scoreFor(int player, struct gameState *state) {
 	int i, score = 0;
 	//score from hand
 	for (i = 0; i < state->handCount[player]; i++) {
-		score = condition1(player, state, score)
+		score = condition1(player, state, score);
 	}
 	//score from discard
 	for (i = 0; i < state->discardCount[player]; i++) {
-		score = condition1(player, state, score)
+		score = condition1(player, state, score);
 	}
 	//score from deck
 	for (i = 0; i < state->discardCount[player]; i++) {
-		score=condition1(player, state, score)
+		score=condition1(player, state, score);
 	}
 	return score;
 }
 
 int condition1(int player, struct gameState *state, int score) {
+	int i = 0;
 	if (state->discard[player][i] == curse) { score = score - 1; };
 	if (state->discard[player][i] == estate) { score = score + 1; };
 	if (state->discard[player][i] == duchy) { score = score + 3; };
@@ -489,7 +490,7 @@ int drawCard(int player, struct gameState *state)
 }
 
 void adjustHand(int player, struct gameState *state, int deckCounter) {
-	state->hand[player][count] = state->deck[player][deckCounter - 1];//Add card to hand
+	state->hand[player][state->handCount[player]] = state->deck[player][deckCounter - 1];//Add card to hand
 	state->deckCount[player]--;
 	state->handCount[player]++;//Increment hand count
 }
@@ -568,7 +569,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	int nextPlayer = currentPlayer + 1;
 	int output;
 
-	int tributeRevealedCards[2] = { -1, -1 };
+	//int tributeRevealedCards[2] = { -1, -1 };
 	int temphand[MAX_HAND];// moved above the if statement
 	int drawntreasure = 0;
 	int cardDrawn;
