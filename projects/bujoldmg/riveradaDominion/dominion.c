@@ -931,7 +931,7 @@ int callBaron(int choice1, int currentPlayer, struct gameState *state) {
 				}
 				state->hand[currentPlayer][state->handCount[currentPlayer]] = -1;
 				state->handCount[currentPlayer]--;
-				card_not_discarded = 1;//Exit the loop
+				card_not_discarded = 0;//Exit the loop
 			}
 			else if (p > state->handCount[currentPlayer]) {
 				if (DEBUG) {
@@ -955,7 +955,6 @@ int callBaron(int choice1, int currentPlayer, struct gameState *state) {
 	else {
 		if (supplyCount(estate, state) > 0) {
 			gainCard(estate, state, 0, currentPlayer);//Gain an estate
-			state->supplyCount[estate]++;//increment Estates
 			if (supplyCount(estate, state) == 0) {
 				isGameOver(state);
 			}
@@ -969,7 +968,7 @@ int callMinion(int currentPlayer, int choice1, int choice2, struct gameState *st
 	int j = 0;
 	state->numActions++;
 	//discard card from hand
-	discardCard(handPos, currentPlayer, state, 1);
+	discardCard(handPos, currentPlayer, state, 0);
 	if (choice1) {	//+2 coins
 		state->coins = state->coins + 2;
 	}
@@ -1083,7 +1082,9 @@ int callTribute(int currentPlayer, int nextPlayer, struct gameState *state) {
 		state->playedCardCount++;
 		tributeRevealedCards[1] = -1;
 	}
-	for (i = 0; i <= 2; i++) {
+	for (i = 0; i < 2; i++) {
+		if (tributeRevealedCards[i] >= curse && tributeRevealedCards[i] <= treasure_map)
+		{
 		if (tributeRevealedCards[i] == copper || tributeRevealedCards[i] == silver || tributeRevealedCards[i] == gold) {//Treasure cards
 			state->coins += 2;
 		}
@@ -1092,7 +1093,8 @@ int callTribute(int currentPlayer, int nextPlayer, struct gameState *state) {
 			drawCard(currentPlayer, state);
 		}
 		else {//Action Card
-			state->numActions = state->numActions + 4;
+			state->numActions = state->numActions + 2;
+		}
 		}
 	}
 	return 0;
