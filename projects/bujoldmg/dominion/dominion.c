@@ -39,7 +39,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 
   int i;
   int j;
-  int it;			
   //set up random number generator
   SelectStream(1);
   PutSeed((long)randomSeed);
@@ -159,19 +158,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 	}
     }
 
-  //draw player hands
-  for (i = 0; i < numPlayers; i++)
-    {  
-      //initialize hand size to zero
-      state->handCount[i] = 0;
-      state->discardCount[i] = 0;
-      //draw 5 cards
-      // for (j = 0; j < 5; j++)
-      //	{
-      //	  drawCard(i, state);
-      //	}
-    }
-  
   //set embargo tokens to 0 for all supply piles
   for (i = 0; i <= treasure_map; i++)
     {
@@ -185,13 +171,19 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
   state->numBuys = 1;
   state->playedCardCount = 0;
   state->whoseTurn = 0;
-  state->handCount[state->whoseTurn] = 0;
-  //int it; move to top
 
-  //Moved draw cards to here, only drawing at the start of a turn
-  for (it = 0; it < 5; it++){
-    drawCard(state->whoseTurn, state);
-  }
+  //draw player hands
+  for (i = 0; i < numPlayers; i++)
+    {  
+      //initialize hand size to zero
+      state->handCount[i] = 0;
+      state->discardCount[i] = 0;
+      //draw 5 cards
+      for (j = 0; j < 5; j++)
+      {
+          drawCard(i, state);
+      }
+    }
 
   updateCoins(state->whoseTurn, state, 0);
 
@@ -348,7 +340,6 @@ int whoseTurn(struct gameState *state) {
 }
 
 int endTurn(struct gameState *state) {
-  int k;
   int i;
   int currentPlayer = whoseTurn(state);
   
@@ -359,6 +350,14 @@ int endTurn(struct gameState *state) {
   }
   state->handCount[currentPlayer] = 0;//Reset hand count
     
+  // place played cards in player's discard pile
+  for (i = 0; i < state->playedCardCount; i++)
+  {
+	state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->playedCards[i];
+	state->discardCount[currentPlayer]++;
+  }
+  state->playedCardCount = 0;
+  
   //Code for determining the player
   if (currentPlayer < (state->numPlayers - 1)){ 
     state->whoseTurn = currentPlayer + 1;//Still safe to increment
@@ -372,13 +371,10 @@ int endTurn(struct gameState *state) {
   state->numActions = 1;
   state->coins = 0;
   state->numBuys = 1;
-  state->playedCardCount = 0;
-  state->handCount[state->whoseTurn] = 0;
 
-  //int k; move to top
-  //Next player draws hand
-  for (k = 0; k < 5; k++){
-    drawCard(state->whoseTurn, state);//Draw a card
+  //Player draws his next hand
+  for (i = 0; i < 5; i++){
+    drawCard(currentPlayer, state);//Draw a card
   }
 
   //Update money
@@ -441,7 +437,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
   //score from deck
-  for (i = 0; i < state->discardCount[player]; i++)
+  for (i = 0; i < state->deckCount[player]; i++)
     {
       if (state->deck[player][i] == curse) { score = score - 1; };
       if (state->deck[player][i] == estate) { score = score + 1; };
@@ -450,6 +446,20 @@ int scoreFor (int player, struct gameState *state) {
       if (state->deck[player][i] == great_hall) { score = score + 1; };
       if (state->deck[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
     }
+
+  //score from played cards
+  if (player == state->whoseTurn)	// if current player
+  {
+    for (i = 0; i < state->playedCardCount; i++)
+    {
+      if (state->playedCards[i] == curse) { score = score - 1; };
+      if (state->playedCards[i] == estate) { score = score + 1; };
+      if (state->playedCards[i] == duchy) { score = score + 3; };
+      if (state->playedCards[i] == province) { score = score + 6; };
+      if (state->playedCards[i] == great_hall) { score = score + 1; };
+      if (state->playedCards[i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
+    }
+  }
 
   return score;
 }

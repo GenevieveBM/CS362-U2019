@@ -37,3 +37,23 @@ all: playdom player
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+
+
+
+unittestresults: dominion.c rngs.c dominion_testing.c testInitializeGame.c testEndTurn.c
+	echo -e "Dominion test results:\n" > unittestresults.out
+	
+	echo "testInitializeGame.c:" >> unittestresults.out
+	gcc -o testInitializeGame testInitializeGame.c dominion_testing.c dominion.c rngs.c $(CFLAGS)
+	./testInitializeGame >> unittestresults.out
+	gcov dominion.c -bf >> unittestresults.out
+	
+	echo "testEndTurn.c:" >> unittestresults.out
+	gcc -o testEndTurn testEndTurn.c dominion_testing.c dominion.c rngs.c $(CFLAGS)
+	./testEndTurn >> unittestresults.out
+	gcov dominion.c -bf >> unittestresults.out
+	
+	echo "testScoreFor.c:" >> unittestresults.out
+	gcc -o testScoreFor testScoreFor.c dominion_testing.c dominion.c rngs.c $(CFLAGS)
+	./testScoreFor >> unittestresults.out
+	gcov dominion.c -bf >> unittestresults.out

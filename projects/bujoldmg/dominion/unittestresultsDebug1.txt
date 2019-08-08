@@ -1,0 +1,604 @@
+Dominion test results:
+
+testInitializeGame.c:
+
+**********TESTING initializeGame()**********
+
+*TEST: numPlayers = 1
+ PASS -- returned < 0
+
+*TEST: numPlayers = 2
+       kingdomCards = adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall
+ PASS -- returned 0
+ PASS -- numPlayers = 2, expected = 2
+ PASS -- whoseTurn = 0, expected = 0
+ PASS -- phase = 0, expected = 0
+ PASS -- numActions = 1, expected = 1
+ PASS -- numBuys = 1, expected = 1
+ PASS -- coins = 4, expected = 4
+ PASS -- playedCardCount = 0, expected = 0
+ PASS -- supply piles content correct
+Player 0
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 1
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+
+*TEST: numPlayers = 3
+       kingdomCards = adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall
+ PASS -- returned 0
+ PASS -- numPlayers = 3, expected = 3
+ PASS -- whoseTurn = 0, expected = 0
+ PASS -- phase = 0, expected = 0
+ PASS -- numActions = 1, expected = 1
+ PASS -- numBuys = 1, expected = 1
+ PASS -- coins = 4, expected = 4
+ PASS -- playedCardCount = 0, expected = 0
+ PASS -- supply piles content correct
+Player 0
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 1
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 2
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+
+*TEST: numPlayers = 4
+       kingdomCards = adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall
+ PASS -- returned 0
+ PASS -- numPlayers = 4, expected = 4
+ PASS -- whoseTurn = 0, expected = 0
+ PASS -- phase = 0, expected = 0
+ PASS -- numActions = 1, expected = 1
+ PASS -- numBuys = 1, expected = 1
+ PASS -- coins = 4, expected = 4
+ PASS -- playedCardCount = 0, expected = 0
+ PASS -- supply piles content correct
+Player 0
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 1
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 2
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 3
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+
+*TEST: numPlayers > MAX_PLAYERS
+ PASS -- returned < 0
+
+*TEST: numPlayers = 2
+       kingdomCards = village, baron, minion, steward, tribute, ambassador, cutpurse, salvager, village, treasure_map
+ PASS -- returned 0
+ PASS -- numPlayers = 2, expected = 2
+ PASS -- whoseTurn = 0, expected = 0
+ PASS -- phase = 0, expected = 0
+ PASS -- numActions = 1, expected = 1
+ PASS -- numBuys = 1, expected = 1
+ PASS -- coins = 4, expected = 4
+ PASS -- playedCardCount = 0, expected = 0
+ PASS -- supply piles content correct
+Player 0
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+Player 1
+ PASS -- handCount = 5, expected = 5
+ PASS -- deckCount = 5, expected = 5
+ PASS -- discardCount = 0, expected = 0
+ PASS -- hand + deck contents == 3 Estate + 7 Copper
+
+*TEST: numPlayers = 2
+       kingdomCards = village, baron, minion, steward, tribute, ambassador, cutpurse, salvager, sea_hag, treasure_map (duplicate village)
+ PASS -- returned < 0
+Function 'updateCoins'
+Lines executed:81.82% of 11
+Branches executed:100.00% of 8
+Taken at least once:75.00% of 8
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 1
+
+Function 'discardCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'cardEffect'
+Lines executed:0.00% of 236
+Branches executed:0.00% of 199
+Taken at least once:0.00% of 199
+Calls executed:0.00% of 64
+
+Function 'getCost'
+Lines executed:0.00% of 30
+Branches executed:0.00% of 28
+Taken at least once:0.00% of 28
+No calls
+
+Function 'drawCard'
+Lines executed:36.36% of 22
+Branches executed:33.33% of 6
+Taken at least once:16.67% of 6
+Calls executed:0.00% of 1
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+Calls executed:0.00% of 2
+
+Function 'scoreFor'
+Lines executed:0.00% of 24
+Branches executed:0.00% of 42
+Taken at least once:0.00% of 42
+Calls executed:0.00% of 3
+
+Function 'isGameOver'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 8
+Taken at least once:0.00% of 8
+No calls
+
+Function 'endTurn'
+Lines executed:0.00% of 20
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 3
+
+Function 'whoseTurn'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:0.00% of 9
+Branches executed:0.00% of 12
+Taken at least once:0.00% of 12
+No calls
+
+Function 'supplyCount'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:0.00% of 3
+No branches
+Calls executed:0.00% of 1
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+No branches
+Calls executed:0.00% of 1
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 4
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+Calls executed:0.00% of 3
+
+Function 'shuffle'
+Lines executed:93.75% of 16
+Branches executed:100.00% of 8
+Taken at least once:87.50% of 8
+Calls executed:100.00% of 2
+
+Function 'initializeGame'
+Lines executed:98.36% of 61
+Branches executed:100.00% of 46
+Taken at least once:97.83% of 46
+Calls executed:100.00% of 5
+
+Function 'kingdomCards'
+Lines executed:0.00% of 13
+No branches
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 3
+No branches
+No calls
+
+Function 'compare'
+Lines executed:83.33% of 6
+Branches executed:100.00% of 4
+Taken at least once:75.00% of 4
+No calls
+
+File 'dominion.c'
+Lines executed:17.73% of 547
+Branches executed:16.31% of 417
+Taken at least once:14.87% of 417
+Calls executed:7.78% of 90
+Creating 'dominion.c.gcov'
+
+testEndTurn.c:
+
+**********TESTING endTurn()**********
+
+*TEST: end 1st player's turn (with one played card)
+ PASS -- numPlayers = 2, expected = 2
+ PASS -- whoseTurn = 1, expected = 1
+ PASS -- phase = 0, expected = 0
+ PASS -- numActions = 1, expected = 1
+ PASS -- numBuys = 1, expected = 1
+ PASS -- coins = 4, expected = 4
+ PASS -- playedCardCount = 0, expected = 0
+ PASS -- supply piles unchanged
+ FAIL -- handCount = 0, expected = 5
+ FAIL -- handCount + discardCount + deckCount = 9, expected = 10
+ FAIL -- hand + discard + deck combined content unchanged
+ PASS -- player 1 handCount = 5, expected = 5
+ FAIL -- player 1 hand contents unchanged
+ PASS -- player 1 discardCount = 0, expected = 0
+ PASS -- player 1 discard pile contents unchanged
+ FAIL -- player 1 deckCount = 0, expected = 5
+ FAIL -- player 1 deck contents unchanged
+
+*TEST: end 2nd player's turn (no played cards)
+ PASS -- numPlayers = 2, expected = 2
+ PASS -- whoseTurn = 0, expected = 0
+ PASS -- phase = 0, expected = 0
+ PASS -- numActions = 1, expected = 1
+ PASS -- numBuys = 1, expected = 1
+ PASS -- coins = 3, expected = 3
+ PASS -- playedCardCount = 0, expected = 0
+ PASS -- supply piles unchanged
+ FAIL -- handCount = 0, expected = 5
+ PASS -- handCount + discardCount + deckCount = 10, expected = 10
+ PASS -- hand + discard + deck combined content unchanged
+ PASS -- player 0 handCount = 5, expected = 5
+ FAIL -- player 0 hand contents unchanged
+ PASS -- player 0 discardCount = 0, expected = 0
+ PASS -- player 0 discard pile contents unchanged
+ FAIL -- player 0 deckCount = 0, expected = 5
+ FAIL -- player 0 deck contents unchanged
+Function 'updateCoins'
+Lines executed:81.82% of 11
+Branches executed:100.00% of 8
+Taken at least once:75.00% of 8
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 1
+
+Function 'discardCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'cardEffect'
+Lines executed:0.00% of 236
+Branches executed:0.00% of 199
+Taken at least once:0.00% of 199
+Calls executed:0.00% of 64
+
+Function 'getCost'
+Lines executed:0.00% of 30
+Branches executed:0.00% of 28
+Taken at least once:0.00% of 28
+No calls
+
+Function 'drawCard'
+Lines executed:36.36% of 22
+Branches executed:33.33% of 6
+Taken at least once:16.67% of 6
+Calls executed:0.00% of 1
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+Calls executed:0.00% of 2
+
+Function 'scoreFor'
+Lines executed:0.00% of 24
+Branches executed:0.00% of 42
+Taken at least once:0.00% of 42
+Calls executed:0.00% of 3
+
+Function 'isGameOver'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 8
+Taken at least once:0.00% of 8
+No calls
+
+Function 'endTurn'
+Lines executed:100.00% of 20
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+Calls executed:100.00% of 3
+
+Function 'whoseTurn'
+Lines executed:100.00% of 2
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:0.00% of 9
+Branches executed:0.00% of 12
+Taken at least once:0.00% of 12
+No calls
+
+Function 'supplyCount'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:0.00% of 3
+No branches
+Calls executed:0.00% of 1
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+No branches
+Calls executed:0.00% of 1
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 4
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+Calls executed:0.00% of 3
+
+Function 'shuffle'
+Lines executed:93.75% of 16
+Branches executed:100.00% of 8
+Taken at least once:87.50% of 8
+Calls executed:100.00% of 2
+
+Function 'initializeGame'
+Lines executed:83.61% of 61
+Branches executed:95.65% of 46
+Taken at least once:78.26% of 46
+Calls executed:100.00% of 5
+
+Function 'kingdomCards'
+Lines executed:0.00% of 13
+No branches
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 3
+No branches
+No calls
+
+Function 'compare'
+Lines executed:83.33% of 6
+Branches executed:100.00% of 4
+Taken at least once:75.00% of 4
+No calls
+
+File 'dominion.c'
+Lines executed:20.11% of 547
+Branches executed:17.27% of 417
+Taken at least once:14.15% of 417
+Calls executed:11.11% of 90
+Creating 'dominion.c.gcov'
+
+testScoreFor.c:
+
+**********TESTING scoreFor()**********
+
+*TEST: score for player 0 (current player) - test all victory cards except gardens and curse
+Player 0, hand -> Estate Duchy Province Great hall Estate 
+Player 0, deck -> Estate Duchy Province Great hall Estate 
+Player 0, discard -> Estate Duchy Province Great hall Estate 
+Player 0, played -> Great hall 
+ FAIL -- score = 36, expected = 37
+
+*TEST: score for player 1 (other player) - test all victory cards except gardens and curse
+Player 1, hand -> Estate Duchy Province Great hall Estate 
+Player 1, deck -> Estate Duchy Province Great hall Estate 
+Player 1, discard -> Estate Duchy Province Great hall Estate 
+ PASS -- score = 36, expected = 36
+
+*TEST: score for player 1 (other player) - test gardens card
+Player 1, hand -> Copper Copper Gardens Copper 
+Player 1, deck -> Remodel Smithy Village Baron Minion Gardens 
+Player 1, discard -> Gardens Steward Tribute Ambassador Cutpurse Embargo Outpost Salvager Sea hag 
+ FAIL -- score = 1, expected = 3
+
+*TEST: score for player 1 (other player) - test curse card
+Player 1, hand -> Adventurer Council room Feast Mine Curse 
+Player 1, deck -> Copper Silver Curse Gold 
+Player 1, discard -> Curse Treasure map Curse 
+ PASS -- score = -4, expected = -4
+
+*TEST: score for player 1 (other player) - test points in hand only (empty deck and discard)
+Player 1, hand -> Estate Copper Duchy Silver Estate Gold 
+Player 1, deck -> 
+Player 1, discard -> 
+ PASS -- score = 5, expected = 5
+
+*TEST: score for player 1 (other player) - test points in deck only (empty hand and discard)
+Player 1, hand -> 
+Player 1, deck -> Estate Copper Duchy Silver Estate Gold 
+Player 1, discard -> 
+ FAIL -- score = 0, expected = 5
+
+*TEST: score for player 1 (other player) - test points in discard only (empty hand and deck)
+Player 1, hand -> 
+Player 1, deck -> 
+Player 1, discard -> Estate Copper Duchy Silver Estate Gold 
+ FAIL -- score = 6, expected = 5
+Function 'updateCoins'
+Lines executed:81.82% of 11
+Branches executed:100.00% of 8
+Taken at least once:75.00% of 8
+No calls
+
+Function 'gainCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 1
+
+Function 'discardCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+No calls
+
+Function 'cardEffect'
+Lines executed:0.00% of 236
+Branches executed:0.00% of 199
+Taken at least once:0.00% of 199
+Calls executed:0.00% of 64
+
+Function 'getCost'
+Lines executed:0.00% of 30
+Branches executed:0.00% of 28
+Taken at least once:0.00% of 28
+No calls
+
+Function 'drawCard'
+Lines executed:36.36% of 22
+Branches executed:33.33% of 6
+Taken at least once:16.67% of 6
+Calls executed:0.00% of 1
+
+Function 'getWinners'
+Lines executed:0.00% of 24
+Branches executed:0.00% of 22
+Taken at least once:0.00% of 22
+Calls executed:0.00% of 2
+
+Function 'scoreFor'
+Lines executed:100.00% of 24
+Branches executed:100.00% of 42
+Taken at least once:100.00% of 42
+Calls executed:100.00% of 3
+
+Function 'isGameOver'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 8
+Taken at least once:0.00% of 8
+No calls
+
+Function 'endTurn'
+Lines executed:0.00% of 20
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 3
+
+Function 'whoseTurn'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'fullDeckCount'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 12
+Taken at least once:75.00% of 12
+No calls
+
+Function 'supplyCount'
+Lines executed:0.00% of 2
+No branches
+No calls
+
+Function 'handCard'
+Lines executed:0.00% of 3
+No branches
+Calls executed:0.00% of 1
+
+Function 'numHandCards'
+Lines executed:0.00% of 2
+No branches
+Calls executed:0.00% of 1
+
+Function 'buyCard'
+Lines executed:0.00% of 13
+Branches executed:0.00% of 6
+Taken at least once:0.00% of 6
+Calls executed:0.00% of 4
+
+Function 'playCard'
+Lines executed:0.00% of 14
+Branches executed:0.00% of 10
+Taken at least once:0.00% of 10
+Calls executed:0.00% of 3
+
+Function 'shuffle'
+Lines executed:93.75% of 16
+Branches executed:100.00% of 8
+Taken at least once:87.50% of 8
+Calls executed:100.00% of 2
+
+Function 'initializeGame'
+Lines executed:83.61% of 61
+Branches executed:95.65% of 46
+Taken at least once:78.26% of 46
+Calls executed:100.00% of 5
+
+Function 'kingdomCards'
+Lines executed:0.00% of 13
+No branches
+No calls
+
+Function 'newGame'
+Lines executed:0.00% of 3
+No branches
+No calls
+
+Function 'compare'
+Lines executed:83.33% of 6
+Branches executed:100.00% of 4
+Taken at least once:75.00% of 4
+No calls
+
+File 'dominion.c'
+Lines executed:22.12% of 547
+Branches executed:28.78% of 417
+Taken at least once:24.94% of 417
+Calls executed:11.11% of 90
+Creating 'dominion.c.gcov'
+
